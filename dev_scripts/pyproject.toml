@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aas-core-protobuf-generation"
+version = "0.0.1"
+
+description = "Generate ProtoBuf definitions for AAS meta-models."
+readme = "README.md"
+requires-python = ">=3.7"
+
+authors = [
+    { name = "Marko Ristin", email = "marko@ristin.ch" }
+]
+
+dependencies = [
+    "aas-core-meta@git+https://github.com/aas-core-works/aas-core-meta@f9cbdb3#egg=aas-core-meta",
+    "aas-core-codegen@git+https://github.com/aas-core-works/aas-core-codegen@6df5c9e8#egg=aas-core-codegen",
+]
+
+[project.urls]
+repository = "https://github.com/aas-core-works/aas-core-protobuf"
+
+license = "MIT"
+
+[tool.setuptools.packages.find]
+include = ["aas_core_protobuf_generation"]
+exclude = ["precommit.py"]
+
+# Development dependencies
+[tool]
+[tool.black]
+line-length = 88
+
+[tool.pylint]
+disable = ["too-many-locals", "no-member", "duplicate-code"]
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+
+[project.optional-dependencies]
+dev = [
+    "black==24.8.0",
+    "pylint==3.2.7",
+    "mypy==1.5.1",
+]
