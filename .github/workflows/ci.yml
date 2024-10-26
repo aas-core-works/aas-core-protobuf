@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+    paths:
+      - dev_scripts/**
+  pull_request:
+    branches: [ 'main' ]
+    paths:
+      - dev_scripts/**
+
+jobs:
+  Precommit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10']
+
+    defaults:
+      run:
+        working-directory: ./dev_scripts
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -e .[dev]
+
+      - name: Run precommit.py
+        run: python3 precommit.py
