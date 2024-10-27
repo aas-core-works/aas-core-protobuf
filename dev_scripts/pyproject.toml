@@ -16,7 +16,7 @@ authors = [
 
 dependencies = [
     "aas-core-meta@git+https://github.com/aas-core-works/aas-core-meta@f9cbdb3#egg=aas-core-meta",
-    "aas-core-codegen@git+https://github.com/aas-core-works/aas-core-codegen@6df5c9e8#egg=aas-core-codegen",
+    "aas-core-codegen@git+https://github.com/aas-core-works/aas-core-codegen@dc2d21cd#egg=aas-core-codegen",
 ]
 
 [project.urls]
